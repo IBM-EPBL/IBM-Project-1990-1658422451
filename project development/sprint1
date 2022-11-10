@@ -1,0 +1,29 @@
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(5,6,8,9,10,11);
+
+int redled = 2;
+int greenled = 3;
+void setup()
+{
+  pinMode(redled, OUTPUT);
+  pinMode(greenled,OUTPUT);
+}
+void loop()
+{
+  int analogValue = analogRead(sensor);
+  Serial.print(analogValue);
+  if(analogValue>sensorThresh)
+  {
+    digitalWrite(redled,HIGH);
+    digitalWrite(greenled,LOW);
+  }
+  else
+  {
+    digitalWrite(greenled,HIGH);
+    digitalWrite(redled,LOW);
+  }
+}
+
+
+
+// this program is used to make the red and the green leds blink
